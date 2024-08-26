@@ -10,14 +10,14 @@ BOLD=$(tput bold)
 
 top_cpu() {
     echo "${BOLD}${YELLOW}Top 10 CPU Consuming Processes:${RESET}"
-    ps -eo pid,comm,%cpu --sort=-%cpu | head -n 11 | column -t
+    ps -eo pid,comm,%cpu --sort=-%cpu | head -n 11
     echo ""
 }
 
 
 top_memory() {
     echo "${BOLD}${YELLOW}Top 10 Memory Consuming Processes:${RESET}"
-    ps -eo pid,comm,%mem --sort=-%mem | head -n 11 | column -t
+    ps -eo pid,comm,%mem --sort=-%mem | head -n 11 
     echo ""
 }
 
@@ -27,16 +27,16 @@ network_monitor() {
     echo "${YELLOW}Number of Concurrent Connections: ${RESET}$(ss -Htan | wc -l)"
     echo "${YELLOW}Packet Drops: ${RESET}$(netstat -s | grep 'segments retransmited')"
     echo "${YELLOW}Network Traffic (MB in/out):${RESET}"
-    ifstat -t 1 1 | tail -n +3 | column -t
+    ifstat -t 1 1 | tail -n +3 
     echo ""
 }
 
 
 disk_usage() {
     echo "${BOLD}${GREEN}Disk Usage:${RESET}"
-    df -h | grep '^/dev/' | awk '{ printf "%-20s %-10s %-20s\n", $6, $5, $1 }' | column -t
+    df -h 
     echo "${BOLD}${RED}Partitions using more than 80% space:${RESET}"
-    df -h | awk '$5 >= 80 {print $0}' | column -t
+    df -h | awk '$5 >= 80 {print $0}' 
     echo ""
 }
 
@@ -45,7 +45,7 @@ system_load() {
     echo "${BOLD}${YELLOW}System Load:${RESET}"
     uptime
     echo "${YELLOW}CPU Usage Breakdown:${RESET}"
-    mpstat | tail -n +4 | awk '{print "User: "$3"% System: "$5"% Idle: "$13"%"}' | column -t
+    mpstat | tail -n +4 | awk '{print "User: "$3"% System: "$5"% Idle: "$13"%"}' 
     echo ""
 }
 
@@ -72,7 +72,7 @@ process_monitor() {
 
 service_monitor() {
     echo "${BOLD}${GREEN}Service Monitoring:${RESET}"
-    for service in sshd nginx apache2 iptables; do
+    for service in sshd nginx apache2 iptables ufw; do
         if systemctl is-active --quiet $service; then
             echo "${BOLD}${service} is ${GREEN}running${RESET}"
         else

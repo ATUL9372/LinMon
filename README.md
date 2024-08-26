@@ -29,11 +29,22 @@
     sudo chmod +x installation.sh LinMon_DashBoard_Tmux.sh LinMon_Functions.sh LinMon.sh
     ```
 
-3. Run the script:
+3. Install required packages:
+
+    ```bash
+    sudo ./installation.sh
+    ```
+
+4. Run the script:
 
     ```bash
     sudo ./LinMon.sh
-    ```
+
+5. Run the script with Tmux dashboard:
+
+    ```bash
+    sudo ./LinMon_DashBoard_Tmux.sh
+ 
 
 
 
