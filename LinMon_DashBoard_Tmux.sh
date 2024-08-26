@@ -1,7 +1,9 @@
 #!/bin/bash
 
 
-functions_script="~/LinMon"  # Replace with the actual path
+functions_script="~/LinMon/LinMon_Functions.sh"  
+
+tmux kill-session -t linmonatul
 
 tmux new-session -d -s linmonatul
 
