@@ -44,7 +44,3 @@
 
     ```bash
     sudo ./LinMon_DashBoard_Tmux.sh
- 
-
-
-
